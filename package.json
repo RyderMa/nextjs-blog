@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "ali-oss": "^6.20.0",
     "autoprefixer": "^10.4.19",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
