@@ -3,11 +3,17 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import type { FC, ReactNode } from 'react';
 
 const name = '[Your Name]';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+type LayoutProps = {
+  children: ReactNode;
+  home?: boolean;
+};
+
+const Layout: FC<LayoutProps> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,13 +25,13 @@ export default function Layout({ children, home }) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle,
+            siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className="flex flex-col items-center">
         {home ? (
           <>
             <Image
@@ -36,7 +42,7 @@ export default function Layout({ children, home }) {
               width={144}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={`${utilStyles.heading2Xl}`}>{name}</h1>
           </>
         ) : (
           <>
@@ -66,4 +72,5 @@ export default function Layout({ children, home }) {
       )}
     </div>
   );
-}
+};
+export default Layout;
